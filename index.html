@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUNDAY CLUB｜星期日俱樂部</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --yellow: #f5cf35;
+  --blue: #8dc9e8;
+  --red: #f16b4e;
+  --cream: #fff8e9;
+  --ink: #25251f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Noto Sans TC", Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font: inherit;
+}
+
+.display {
+  font-family: "Anton", Impact, "Arial Black", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.container {
+  width: 88%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section {
+  padding: 85px 0;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .18em;
+}
+
+.pill {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 2px solid var(--ink);
+  border-radius: 30px;
+  background: transparent;
+  font-size: 11px;
+  font-weight: 900;
+  transition: .25s;
+}
+
+.pill:hover,
+.pill.active {
+  background: var(--ink);
+  color: white;
+}
+
+.btn-dark {
+  display: inline-block;
+  padding: 14px 23px;
+  border: 2px solid var(--ink);
+  border-radius: 30px;
+  background: var(--ink);
+  color: white;
+  font-size: 11px;
+  font-weight: 900;
+  transition: .25s;
+}
+
+.btn-dark:hover {
+  background: transparent;
+  color: var(--ink);
+}
+
+/* NAVIGATION */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,248,233,.95);
+  border-bottom: 2px solid var(--ink);
+  backdrop-filter: blur(10px);
+}
+
+.navbar {
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 28px;
+  line-height: .9;
+}
+
+.logo span {
+  color: var(--red);
+}
+
+.logo small {
+  display: block;
+  margin-top: 6px;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .18em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  transition: color .2s;
+}
+
+.nav-links a:hover {
+  color: var(--red);
+}
+
+.menu-toggle {
+  display: none;
+  padding: 9px 15px;
+  border: 2px solid var(--ink);
+  border-radius: 30px;
+  background: none;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 18px;
+  padding: 20px 6%;
+  border-top: 2px solid var(--ink);
+  background: var(--cream);
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-menu a {
+  font-size: 13px;
+  font-weight: 900;
+}
+
+/* HERO */
+
+.hero {
+  padding: 70px 0;
+  background: var(--yellow);
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: center;
+  gap: 30px;
+}
+
+.hero-tag {
+  display: inline-block;
+  padding: 9px 15px;
+  margin-bottom: 25px;
+  border: 2px solid var(--ink);
+  border-radius: 30px;
+  background: var(--cream);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.hero h1 {
+  font-size: clamp(65px, 10vw, 145px);
+  line-height: 1.05;
+}
+
+.hero h1 span {
+  color: var(--red);
+}
+
+.hero-copy {
+  margin-top: 30px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 2;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.hero-art {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  max-width: 480px;
+  width: 100%;
+  margin: auto;
+}
+
+.hero-blob {
+  position: absolute;
+  width: 78%;
+  height: 78%;
+  border: 4px solid var(--ink);
+  border-radius: 42%;
+  background: var(--blue);
+  transform: rotate(-9deg);
+  animation: float 5s ease-in-out infinite;
+}
+
+.hero-cup {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 64%;
+  height: 64%;
+  border: 4px solid var(--ink);
+  border-radius: 50%;
+  background: var(--red);
+  font-size: clamp(80px, 13vw, 150px);
+  box-shadow: 12px 12px 0 var(--ink);
+  animation: float 5s ease-in-out infinite reverse;
+}
+
+.hero-sun {
+  position: absolute;
+  top: 8%;
+  right: 2%;
+  font-size: 50px;
+}
+
+.hero-fruit {
+  position: absolute;
+  bottom: 5%;
+  left: 4%;
+  font-size: 48px;
+}
+
+.hero-sticker {
+  position: absolute;
+  right: 0;
+  bottom: 12%;
+  padding: 15px 13px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--cream);
+  font-size: 10px;
+  font-weight: 900;
+  text-align: center;
+  z-index: 3;
+  box-shadow: 4px 4px 0 var(--ink);
+  transform: rotate(8deg);
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-13px);
+  }
+}
+
+/* MARQUEE */
+
+.marquee {
+  overflow: hidden;
+  padding: 14px 0;
+  border-block: 2px solid var(--ink);
+  background: var(--red);
+  color: var(--cream);
+  white-space: nowrap;
+  display: flex;
+}
+
+.marquee span {
+  display: inline-block;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  align-items: center;
+  gap: 55px;
+}
+
+.about-art {
+  min-height: 340px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background: var(--blue);
+  border: 2px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 8px 8px 0 var(--ink);
+  text-align: center;
+}
+
+.about-art .sun {
+  font-size: 100px;
+}
+
+.about-art .words {
+  font-size: 52px;
+  line-height: .95;
+}
+
+.about-sticker {
+  position: absolute;
+  right: 15px;
+  bottom: 18px;
+  padding: 10px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 30px;
+  background: var(--yellow);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.about-copy h2 {
+  margin-top: 15px;
+  font-size: clamp(48px, 6vw, 76px);
+  line-height: .95;
+}
+
+.about-copy h2 span {
+  color: var(--red);
+}
+
+.about-copy p {
+  max-width: 490px;
+  margin-top: 25px;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 25px;
+}
+
+/* ABOUT ACCORDION (可下拉式品牌介紹) */
+
+.story-accordion {
+  margin-top: 28px;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.accordion-item {
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  background: var(--cream);
+  overflow: hidden;
+  transition: box-shadow .25s, transform .25s;
+}
+
+.accordion-item.open {
+  box-shadow: 5px 5px 0 var(--ink);
+  background: #fffdf8;
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--ink);
+  transition: background .2s;
+}
+
+.accordion-header:hover {
+  background: rgba(245, 207, 53, 0.35);
+}
+
+.accordion-item.open .accordion-header {
+  background: var(--yellow);
+  border-bottom: 2px solid var(--ink);
+}
+
+.accordion-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--cream);
+  font-size: 12px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform .3s ease, background .25s;
+}
+
+.accordion-item.open .accordion-icon {
+  transform: rotate(180deg);
+  background: var(--red);
+  color: var(--cream);
+}
+
+.accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .32s ease;
+}
+
+.accordion-item.open .accordion-body {
+  grid-template-rows: 1fr;
+}
+
+.accordion-content {
+  overflow: hidden;
+}
+
+.accordion-inner {
+  padding: 15px 18px 18px;
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--ink);
+}
+
+.accordion-inner strong {
+  color: var(--red);
+}
+
+/* SPACE CAROUSEL (OUR STORY 下方店面與室內照片輪播) */
+
+.space-carousel-wrap {
+  margin-top: 65px;
+  padding-top: 55px;
+  border-top: 2px dashed #25251f33;
+}
+
+.carousel-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.carousel-header h3 {
+  margin-top: 8px;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: .95;
+}
+
+.carousel-header h3 span {
+  color: var(--red);
+}
+
+.carousel-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--yellow);
+  font-size: 16px;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: .2s;
+}
+
+.carousel-btn:hover {
+  background: var(--ink);
+  color: var(--cream);
+  transform: translate(-1px, -1px);
+}
+
+.carousel-viewport {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  border-radius: 24px;
+  background: var(--ink);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform .45s cubic-bezier(.25, .8, .25, 1);
+}
+
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+  aspect-ratio: 16 / 8.5;
+  background: var(--blue);
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slide-caption {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 20px;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  background: rgba(255, 248, 233, .95);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.slide-caption strong {
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.slide-caption span {
+  font-size: 11px;
+  font-weight: 700;
+  color: #555;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--cream);
+  transition: .25s;
+}
+
+.carousel-dot.active {
+  width: 30px;
+  border-radius: 12px;
+  background: var(--red);
+}
+
+/* MENU */
+
+#menu {
+  background: var(--blue);
+  border-block: 2px solid var(--ink);
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.section-heading h2 {
+  margin-top: 12px;
+  font-size: clamp(55px, 8vw, 90px);
+  line-height: .9;
+}
+
+.section-heading h2 span {
+  color: var(--red);
+}
+
+.section-heading p {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 32px 0 25px;
+}
+
+.filters .pill {
+  background: var(--cream);
+}
+
+.filters .pill.active,
+.filters .pill:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.menu-card {
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  background: var(--cream);
+  transition: .25s;
+}
+
+.menu-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 6px 8px 0 var(--ink);
+}
+
+.menu-card[hidden] {
+  display: none;
+}
+
+.menu-art {
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid var(--ink);
+}
+
+.yellow { background: var(--yellow); }
+.red { background: var(--red); }
+.blue { background: var(--blue); }
+
+.cup {
+  width: 92px;
+  height: 112px;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--ink);
+  border-radius: 12px 12px 27px 27px;
+  background: var(--cream);
+  font-size: 38px;
+  box-shadow: 6px 6px 0 var(--ink);
+  transform: rotate(-7deg);
+}
+
+.fruit {
+  position: absolute;
+  top: 16%;
+  right: 17%;
+  font-size: 48px;
+}
+
+.spark {
+  position: absolute;
+  bottom: 15%;
+  left: 16%;
+  font-size: 30px;
+}
+
+.menu-info {
+  padding: 16px;
+}
+
+.menu-info .eyebrow {
+  color: var(--red);
+}
+
+.menu-info h3 {
+  margin-top: 9px;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.menu-info p {
+  margin-top: 4px;
+  color: #666;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.price {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 17px;
+  padding-top: 12px;
+  border-top: 1px dashed #25251f33;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.note {
+  margin-top: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  opacity: .75;
+}
+
+/* SPECIAL */
+
+.special-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 55px;
+}
+
+.special-copy h2 {
+  margin-top: 15px;
+  font-size: clamp(60px, 8vw, 92px);
+  line-height: .9;
+}
+
+.special-copy h2 span {
+  color: var(--red);
+}
+
+.special-copy p {
+  max-width: 390px;
+  margin: 25px 0;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.special-art {
+  min-height: 360px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background: var(--red);
+  border: 2px solid var(--ink);
+  border-radius: 24px;
+  box-shadow: 8px 8px 0 var(--ink);
+  text-align: center;
+}
+
+.fruit-big {
+  font-size: 130px;
+}
+
+.special-title {
+  color: var(--cream);
+  font-size: 48px;
+  line-height: .95;
+}
+
+.limited {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  padding: 14px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--yellow);
+  font-size: 10px;
+  font-weight: 900;
+  transform: rotate(-6deg);
+}
+
+/* GALLERY */
+
+#gallery {
+  background: var(--yellow);
+  border-block: 2px solid var(--ink);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.gallery-item {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  font-size: clamp(55px, 8vw, 90px);
+  transition: .25s;
+}
+
+.gallery-item:hover {
+  transform: rotate(-4deg) scale(1.03);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.gallery-item:nth-child(1),
+.gallery-item:nth-child(4) {
+  background: var(--blue);
+}
+
+.gallery-item:nth-child(2) {
+  background: var(--cream);
+}
+
+.gallery-item:nth-child(3) {
+  background: var(--red);
+}
+
+/* LOCATION */
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.location-card {
+  min-height: 280px;
+  padding: 32px;
+  border: 2px solid var(--ink);
+  border-radius: 24px;
+  background: var(--cream);
+}
+
+.location-card.blue {
+  background: var(--blue);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.location-card h3 {
+  font-size: 48px;
+  line-height: .95;
+}
+
+.location-card p {
+  margin-top: 25px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 2;
+}
+
+.btn-map {
+  display: inline-block;
+  margin-top: 17px;
+  padding: 12px 20px;
+  border: 2px solid var(--ink);
+  border-radius: 30px;
+  background: var(--yellow);
+  font-size: 11px;
+  font-weight: 900;
+  transition: .2s;
+}
+
+.btn-map:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.hours {
+  margin-top: 20px;
+}
+
+.hours div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #25251f33;
+  font-size: 13px;
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 17px;
+}
+
+/* BOOKING FORM (訂位資訊欄位) */
+
+.booking-card {
+  margin-top: 25px;
+  padding: 32px;
+  border: 2px solid var(--ink);
+  border-radius: 24px;
+  background: var(--yellow);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.booking-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.booking-head h3 {
+  margin-top: 8px;
+  font-size: clamp(38px, 5vw, 54px);
+  line-height: .95;
+}
+
+.booking-head h3 span {
+  color: var(--red);
+}
+
+.booking-head p {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.booking-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  outline: none;
+  transition: box-shadow .2s, background .2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  background: #fff;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.booking-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.booking-note {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.booking-feedback {
+  display: none;
+  grid-column: 1 / -1;
+  padding: 16px 20px;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  background: var(--cream);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.8;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.booking-feedback.show {
+  display: block;
+}
+
+.map-embed {
+  margin-top: 25px;
+  border: 2px solid var(--ink);
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--cream);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.map-embed iframe {
+  display: block;
+  width: 100%;
+  height: 320px;
+  border: 0;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 45px 0;
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-logo {
+  font-size: 48px;
+}
+
+.footer-inner p,
+.copyright {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: .1em;
+}
+
+.copyright {
+  text-align: right;
+  opacity: .75;
+}
+
+/* SCROLL ANIMATION */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .7s, transform .7s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav-links {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 650px) {
+  .section {
+    padding: 60px 0;
+  }
+
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .hero {
+    padding: 55px 0 60px;
+  }
+
+  .hero-grid,
+  .about-grid,
+  .special-grid,
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: clamp(58px, 15vw, 90px);
+  }
+
+  .hero-art {
+    max-width: 350px;
+  }
+
+  .about-grid,
+  .special-grid {
+    gap: 35px;
+  }
+
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .menu-art {
+    height: 145px;
+  }
+
+  .cup {
+    transform: scale(.78) rotate(-7deg);
+  }
+
+  .menu-info {
+    padding: 12px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .carousel-slide {
+    aspect-ratio: 4 / 3;
+  }
+
+  .booking-form {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .copyright {
+    text-align: left;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container navbar">
+    <a class="logo display" href="#home">
+      SUNDAY<span>.</span>
+      <small>CLUB / 台中咖啡俱樂部</small>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#about">ABOUT</a>
+      <a href="#menu">MENU</a>
+      <a href="#special">SPECIAL</a>
+      <a href="#gallery">GALLERY</a>
+      <a href="#location">LOCATION</a>
+    </nav>
+
+    <a class="pill nav-cta" href="#menu">FIND YOUR FAVORITE ↗</a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="切換選單">
+      MENU ☰
+    </button>
+  </div>
+
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#about">ABOUT</a>
+    <a href="#menu">MENU</a>
+    <a href="#special">SPECIAL</a>
+    <a href="#gallery">GALLERY</a>
+    <a href="#location">LOCATION</a>
+  </nav>
+</header>
+
+<main id="home">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <div class="hero-tag">✳ GOOD COFFEE, GOOD MOOD. ✳</div>
+
+      <h1 class="display">
+        EVERY DAY<br>
+        FEELS LIKE<br>
+        <span>SUNDAY.</span>
+      </h1>
+
+      <p class="hero-copy">
+        不用等到星期日，今天也值得好好喝杯咖啡。<br>
+        把日常過成喜歡的樣子。
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn-dark" href="#menu">EXPLORE MENU ↗</a>
+        <a class="pill" href="#about">OUR STORY</a>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="hero-blob"></div>
+      <div class="hero-cup">☕</div>
+      <div class="hero-sun">✳</div>
+      <div class="hero-fruit">🍊</div>
+      <div class="hero-sticker">TAKE IT<br>EASY!</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <span>
+    GOOD DAYS START WITH GOOD COFFEE ✳ TAKE A BREAK ✳
+    STAY FOR DESSERT ✳ EVERY DAY FEELS LIKE SUNDAY ✳
+    GOOD DAYS START WITH GOOD COFFEE ✳ TAKE A BREAK ✳
+    STAY FOR DESSERT ✳ EVERY DAY FEELS LIKE SUNDAY ✳
+  </span>
+</div>
+
+<!-- ABOUT -->
+<section class="section reveal" id="about">
+  <div class="container about-grid">
+
+    <div class="about-art">
+      <div>
+        <div class="sun">☀️</div>
+        <div class="display words">SLOW<br>DOWN!</div>
+      </div>
+      <div class="about-sticker">NO RUSH CLUB</div>
+    </div>
+
+    <div class="about-copy">
+      <div class="eyebrow" style="color:var(--red)">
+        01 / OUR STORY
+      </div>
+
+      <h2 class="display">
+        A LITTLE<br>
+        BREAK FROM<br>
+        <span>EVERYDAY.</span>
+      </h2>
+
+      <p>
+        SUNDAY CLUB 是一間想讓生活慢下來的咖啡店。
+        用一杯創意水果咖啡、一份手作甜點，
+        替忙碌的日常留一點空白。
+        這裡沒有星期幾的限制，每一天都可以是星期日。
+      </p>
+
+      <div class="tags">
+        <span class="pill">COFFEE</span>
+        <span class="pill">DESSERT</span>
+        <span class="pill">GOOD VIBES</span>
+      </div>
+
+      <!-- 可下拉式品牌詳細介紹 -->
+      <div class="story-accordion" id="storyAccordion">
+        <div class="accordion-item open">
+          <button class="accordion-header" type="button" aria-expanded="true">
+            <span>01. 核心概念｜每天都像星期日 ☀️</span>
+            <span class="accordion-icon">▾</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                座落於<strong>台中市北區</strong>的街角，我們以「EVERY DAY FEELS LIKE SUNDAY」為靈感，打破工作日與假日的界線，打造一處沒有拘束、輕鬆自由且充滿創意的咖啡聚落。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" type="button" aria-expanded="false">
+            <span>02. 為誰而開｜屬於年輕世代的充電站 ⚡</span>
+            <span class="accordion-icon">▾</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                專為 <strong>18–28 歲大學生、年輕上班族</strong>以及熱愛跑咖探店的甜點控設計。無論是課後與朋友聚會、下班後獨自放空，都能在這裡找到最自在的節奏。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" type="button" aria-expanded="false">
+            <span>03. 風味與視覺｜果香特調 × 插畫包裝 🎨</span>
+            <span class="accordion-icon">▾</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                主打清爽層次的<strong>水果特調咖啡、沁涼氣泡飲與每日手作甜點</strong>，並定期推出季節限定風味與原創主題插畫外帶包裝，讓味覺與視覺一次滿足！
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- OUR STORY 下方：店面及室內照片輪播 -->
+  <div class="container space-carousel-wrap">
+    <div class="carousel-header">
+      <div>
+        <div class="eyebrow" style="color:var(--red)">SPACE TOUR / 店面與室內空間</div>
+        <h3 class="display">INSIDE THE CLUB<span>.</span></h3>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prevSlide" type="button" aria-label="上一張照片">←</button>
+        <button class="carousel-btn" id="nextSlide" type="button" aria-label="下一張照片">→</button>
+      </div>
+    </div>
+
+    <div class="carousel-viewport" id="spaceCarousel">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide">
+          <img
+            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1400&q=80"
+            onerror="this.src='https://placehold.co/1200x640/8dc9e8/25251f?text=SUNDAY+CLUB+STOREFRONT'"
+            alt="SUNDAY CLUB 台中市北區陽光店面外觀">
+          <div class="slide-caption">
+            <strong>01 / SUNLIT STOREFRONT 街角陽光店面</strong>
+            <span>台中市北區學士路 100 號・歡迎隨時推門進來坐坐</span>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img
+            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80"
+            onerror="this.src='https://placehold.co/1200x640/f5cf35/25251f?text=COFFEE+BAR+COUNTER'"
+            alt="SUNDAY CLUB 開放式手沖與特調吧台區">
+          <div class="slide-caption">
+            <strong>02 / CREATIVE COFFEE BAR 創意特調吧台</strong>
+            <span>現萃義式與新鮮水果特調・近距離感受咖啡香氣</span>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <img
+            src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=1400&q=80"
+            onerror="this.src='https://placehold.co/1200x640/f16b4e/fff8e9?text=COZY+LOUNGE+SEATING'"
+            alt="SUNDAY CLUB 舒適自在的室內座位區">
+          <div class="slide-caption">
+            <strong>03 / NO RUSH LOUNGE 慵懶星期日座位區</strong>
+            <span>充足插座與自然採光・適合閱讀、聚會與放空</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-dots" id="carouselDots" aria-label="輪播頁碼指示"></div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="section reveal" id="menu">
+  <div class="container">
+
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">02 / WHAT'S ON THE TABLE</div>
+        <h2 class="display">THE MENU<span>.</span></h2>
+      </div>
+
+      <p>
+        從一杯咖啡開始，<br>
+        找到今天最喜歡的味道。
+      </p>
+    </div>
+
+    <!-- 分類按鈕 -->
+    <div class="filters" id="filters">
+      <button class="pill active" data-category="all">ALL MENU</button>
+      <button class="pill" data-category="coffee">COFFEE</button>
+      <button class="pill" data-category="drinks">DRINKS</button>
+      <button class="pill" data-category="dessert">DESSERT</button>
+    </div>
+
+    <!-- 商品卡片 -->
+    <div class="menu-grid" id="menuGrid">
+
+      <article class="menu-card" data-type="coffee">
+        <div class="menu-art yellow">
+          <span class="cup">☕</span>
+          <span class="fruit">🍊</span>
+          <span class="spark">✳</span>
+        </div>
+        <div class="menu-info">
+          <div class="eyebrow">SIGNATURE / 01</div>
+          <h3>橙香美式</h3>
+          <p>Orange Americano</p>
+          <div class="price">
+            <span>NT$ 150</span><span>↗</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-type="coffee">
+        <div class="menu-art red">
+          <span class="cup">🥛</span>
+          <span class="fruit">🍋</span>
+          <span class="spark">✳</span>
+        </div>
+        <div class="menu-info">
+          <div class="eyebrow">COFFEE / 02</div>
+          <h3>檸檬西西里</h3>
+          <p>Lemon Sicilian</p>
+          <div class="price">
+            <span>NT$ 160</span><span>↗</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-type="drinks">
+        <div class="menu-art yellow">
+          <span class="cup">🥤</span>
+          <span class="fruit">🍓</span>
+          <span class="spark">✳</span>
+        </div>
+        <div class="menu-info">
+          <div class="eyebrow">DRINKS / 03</div>
+          <h3>莓果氣泡飲</h3>
+          <p>Berry Sparkling</p>
+          <div class="price">
+            <span>NT$ 145</span><span>↗</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-type="drinks">
+        <div class="menu-art red">
+          <span class="cup">🍹</span>
+          <span class="fruit">🍑</span>
+          <span class="spark">✳</span>
+        </div>
+        <div class="menu-info">
+          <div class="eyebrow">DRINKS / 04</div>
+          <h3>蜜桃冰茶</h3>
+          <p>Peach Iced Tea</p>
+          <div class="price">
+            <span>NT$ 135</span><span>↗</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-type="dessert">
+        <div class="menu-art blue">
+          <span class="cup">🍰</span>
+          <span class="fruit">🍒</span>
+          <span class="spark">✳</span>
+        </div>
+        <div class="menu-info">
+          <div class="eyebrow">DESSERT / 05</div>
+          <h3>櫻桃奶油蛋糕</h3>
+          <p>Cherry Cream Cake</p>
+          <div class="price">
+            <span>NT$ 160</span><span>↗</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-type="dessert">
+        <div class="menu-art yellow">
+          <span class="cup">🍪</span>
+          <span class="fruit">🍫</span>
+          <span class="spark">✳</span>
+        </div>
+        <div class="menu-info">
+          <div class="eyebrow">DESSERT / 06</div>
+          <h3>巧克力軟餅乾</h3>
+          <p>Choco Cookie</p>
+          <div class="price">
+            <span>NT$ 90</span><span>↗</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-type="coffee">
+        <div class="menu-art blue">
+          <span class="cup">🧋</span>
+          <span class="fruit">🍮</span>
+          <span class="spark">✳</span>
+        </div>
+        <div class="menu-info">
+          <div class="eyebrow">COFFEE / 07</div>
+          <h3>焦糖拿鐵</h3>
+          <p>Caramel Latte</p>
+          <div class="price">
+            <span>NT$ 150</span><span>↗</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="menu-card" data-type="dessert">
+        <div class="menu-art red">
+          <span class="cup">🥞</span>
+          <span class="fruit">🍯</span>
+          <span class="spark">✳</span>
+        </div>
+        <div class="menu-info">
+          <div class="eyebrow">DESSERT / 08</div>
+          <h3>蜂蜜鬆餅</h3>
+          <p>Honey Pancake</p>
+          <div class="price">
+            <span>NT$ 170</span><span>↗</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="note">＊以上品項與價格為網站設計示意。</p>
+  </div>
+</section>
+
+<!-- SPECIAL -->
+<section class="section reveal" id="special">
+  <div class="container special-grid">
+
+    <div class="special-copy">
+      <div class="eyebrow" style="color:var(--red)">
+        03 / SEASONAL PICK
+      </div>
+
+      <h2 class="display">
+        THIS<br>
+        SEASON'S<br>
+        <span>MOOD.</span>
+      </h2>
+
+      <p>
+        季節限定登場！以當季水果搭配咖啡與氣泡，
+        讓每一次造訪都有一點新鮮感。
+      </p>
+
+      <a class="pill" href="#menu">CHECK THE MENU ↗</a>
+    </div>
+
+    <div class="special-art">
+      <div>
+        <div class="eyebrow" style="color:var(--cream)">LIMITED / 2026</div>
+        <div class="fruit-big">🍊</div>
+        <div class="display special-title">
+          CITRUS<br>HAPPY!
+        </div>
+      </div>
+      <div class="limited">FRESH & FUN</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section reveal" id="gallery">
+  <div class="container">
+
+    <div class="eyebrow">04 / LITTLE MOMENTS</div>
+
+    <div class="section-heading">
+      <h2 class="display">THE VIBE<span>.</span></h2>
+      <p>A PLACE TO PAUSE AND PLAY.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">☕</div>
+      <div class="gallery-item">🍰</div>
+      <div class="gallery-item">🍊</div>
+      <div class="gallery-item">☀️</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section reveal" id="location">
+  <div class="container">
+
+    <div class="eyebrow" style="color:var(--red)">
+      05 / COME SAY HI
+    </div>
+
+    <h2 class="display" style="font-size:clamp(60px,8vw,90px);margin-top:12px">
+      FIND US<span style="color:var(--red)">.</span>
+    </h2>
+
+    <div class="location-grid">
+
+      <div class="location-card blue">
+        <h3 class="display">
+          YOUR<br>
+          NEW<br>
+          HAPPY PLACE.
+        </h3>
+
+        <p>
+          台中市北區學士路 100 號<br>
+          Taichung, Taiwan
+        </p>
+
+        <a class="btn-map"
+           href="https://www.google.com/maps/search/?api=1&query=台中市北區學士路"
+           target="_blank" rel="noopener noreferrer">
+          OPEN MAP ↗
+        </a>
+      </div>
+
+      <div class="location-card">
+        <div class="eyebrow">OPENING HOURS</div>
+
+        <div class="hours">
+          <div>
+            <span>MON – FRI</span>
+            <strong>10:00 – 20:00</strong>
+          </div>
+
+          <div>
+            <span>SAT – SUN</span>
+            <strong>09:00 – 21:00</strong>
+          </div>
+
+          <div>
+            <span>WEDNESDAY</span>
+            <strong>CLOSED</strong>
+          </div>
+        </div>
+
+        <div class="eyebrow" style="margin-top:28px">
+          FOLLOW OUR CLUB
+        </div>
+
+        <div class="socials">
+          <a class="pill" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+            INSTAGRAM ↗
+          </a>
+
+          <a class="pill" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+            FACEBOOK ↗
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 訂位資訊欄位 -->
+    <div class="booking-card" id="booking">
+      <div class="booking-head">
+        <div>
+          <div class="eyebrow">RESERVATION / 線上訂位</div>
+          <h3 class="display">BOOK A TABLE<span>.</span></h3>
+        </div>
+        <p>平日不限時｜假日客滿時段用餐時間為 2 小時・6 人以上聚會歡迎來電洽詢</p>
+      </div>
+
+      <form class="booking-form" id="bookingForm">
+        <div class="form-group">
+          <label for="bookName">訂位人姓名 NAME *</label>
+          <input type="text" id="bookName" name="bookName" placeholder="請輸入您的稱呼" required>
+        </div>
+
+        <div class="form-group">
+          <label for="bookPhone">聯絡電話 PHONE *</label>
+          <input type="tel" id="bookPhone" name="bookPhone" placeholder="例如：0912-345-678" required>
+        </div>
+
+        <div class="form-group">
+          <label for="bookGuests">預約人數 GUESTS *</label>
+          <select id="bookGuests" name="bookGuests" required>
+            <option value="1 位">1 位（獨享時光）</option>
+            <option value="2 位" selected>2 位（雙人約會）</option>
+            <option value="3 位">3 位</option>
+            <option value="4 位">4 位（好友聚會）</option>
+            <option value="5-6 位">5–6 位</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="bookDate">預約日期 DATE *</label>
+          <input type="date" id="bookDate" name="bookDate" required>
+        </div>
+
+        <div class="form-group">
+          <label for="bookTime">預約時段 TIME *</label>
+          <select id="bookTime" name="bookTime" required>
+            <option value="10:30">10:30（早安咖啡）</option>
+            <option value="12:00">12:00</option>
+            <option value="14:00" selected>14:00（下午茶時光）</option>
+            <option value="16:00">16:00</option>
+            <option value="18:30">18:30（晚間小憩）</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="bookNote">座位偏好 / 備註 NOTE</label>
+          <input type="text" id="bookNote" name="bookNote" placeholder="窗邊座位、需要插座、慶生等">
+        </div>
+
+        <div class="booking-actions">
+          <span class="booking-note">＊訂位保留 10 分鐘，週三公休恕不開放預約。</span>
+          <button type="submit" class="btn-dark">CONFIRM BOOKING 確認訂位 ↗</button>
+        </div>
+
+        <div class="booking-feedback" id="bookingFeedback" role="status"></div>
+      </form>
+    </div>
+
+    <!-- 嵌入 Google Map 互動地圖 -->
+    <div class="map-embed">
+      <iframe
+        title="SUNDAY CLUB 台中市北區學士路 100 號地圖"
+        src="https://maps.google.com/maps?q=台中市北區學士路100號&t=&z=16&ie=UTF8&iwloc=&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+
+    <div>
+      <div class="display footer-logo">SUNDAY CLUB.</div>
+      <p>EVERY DAY FEELS LIKE SUNDAY.</p>
+    </div>
+
+    <div class="copyright">
+      TAICHUNG, TAIWAN<br>
+      © 2026 SUNDAY CLUB. ALL RIGHTS RESERVED.
+    </div>
+
+  </div>
+</footer>
+
+<script>
+// 1. 菜單分類切換
+const filterButtons = document.querySelectorAll('#filters button');
+const menuCards = document.querySelectorAll('.menu-card');
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    filterButtons.forEach(item => item.classList.remove('active'));
+    button.classList.add('active');
+
+    const category = button.dataset.category;
+
+    menuCards.forEach(card => {
+      card.hidden = !(category === 'all' || card.dataset.type === category);
+    });
+  });
+});
+
+// 2. 手機版漢堡選單
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+menuToggle.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  menuToggle.textContent = isOpen ? 'CLOSE ✕' : 'MENU ☰';
+});
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    menuToggle.textContent = 'MENU ☰';
+  });
+});
+
+// 3. 滾動淡入動畫
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.12 }
+);
+
+document.querySelectorAll('.reveal').forEach(section => {
+  observer.observe(section);
+});
+
+// 4. OUR STORY 可下拉式手風琴切換
+const accordionItems = document.querySelectorAll('#storyAccordion .accordion-item');
+
+accordionItems.forEach(item => {
+  const header = item.querySelector('.accordion-header');
+  header.addEventListener('click', () => {
+    const isCurrentlyOpen = item.classList.contains('open');
+
+    // 先收合其他項目，保持版面俐落
+    accordionItems.forEach(other => {
+      other.classList.remove('open');
+      other.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+    });
+
+    // 若原本為關閉狀態則展開
+    if (!isCurrentlyOpen) {
+      item.classList.add('open');
+      header.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// 5. OUR STORY 下方店面與室內照片輪播
+const carouselTrack = document.getElementById('carouselTrack');
+const slides = document.querySelectorAll('.carousel-slide');
+const prevSlideBtn = document.getElementById('prevSlide');
+const nextSlideBtn = document.getElementById('nextSlide');
+const dotsContainer = document.getElementById('carouselDots');
+let currentSlide = 0;
+let autoSlideTimer;
+
+if (carouselTrack && slides.length > 0) {
+  slides.forEach((_, idx) => {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'carousel-dot' + (idx === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `切換至第 ${idx + 1} 張照片`);
+    dot.addEventListener('click', () => goToSlide(idx));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+  function goToSlide(index) {
+    currentSlide = (index + slides.length) % slides.length;
+    carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+  }
+
+  function resetAutoSlide() {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = setInterval(() => goToSlide(currentSlide + 1), 4500);
+  }
+
+  prevSlideBtn.addEventListener('click', () => {
+    goToSlide(currentSlide - 1);
+    resetAutoSlide();
+  });
+
+  nextSlideBtn.addEventListener('click', () => {
+    goToSlide(currentSlide + 1);
+    resetAutoSlide();
+  });
+
+  // 支援手機左右滑動手勢
+  let touchStartX = 0;
+  carouselTrack.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  carouselTrack.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 40) {
+      goToSlide(diff > 0 ? currentSlide + 1 : currentSlide - 1);
+      resetAutoSlide();
+    }
+  }, { passive: true });
+
+  resetAutoSlide();
+}
+
+// 6. 訂位資訊表單互動
+const bookingForm = document.getElementById('bookingForm');
+const bookDateInput = document.getElementById('bookDate');
+const bookingFeedback = document.getElementById('bookingFeedback');
+
+if (bookDateInput) {
+  const today = new Date().toISOString().split('T')[0];
+  bookDateInput.min = today;
+  bookDateInput.value = today;
+}
+
+if (bookingForm) {
+  bookingForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('bookName').value.trim();
+    const phone = document.getElementById('bookPhone').value.trim();
+    const guests = document.getElementById('bookGuests').value;
+    const date = bookDateInput.value;
+    const time = document.getElementById('bookTime').value;
+    const note = document.getElementById('bookNote').value.trim();
+
+    bookingFeedback.innerHTML = `
+      🎉 <strong>已收到您的訂位申請！SUNDAY CLUB 期待與您見面：</strong><br>
+      訂位大名：${name}（${phone}）｜日期時段：${date} ${time}｜人數：${guests}
+      ${note ? `<br>備註需求：${note}` : ''}
+    `;
+    bookingFeedback.classList.add('show');
+    bookingForm.reset();
+    if (bookDateInput) bookDateInput.value = date;
+  });
+}
+</script>
+
+</body>
+</html>
